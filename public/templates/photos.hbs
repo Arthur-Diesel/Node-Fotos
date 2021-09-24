@@ -1,0 +1,23 @@
+<form action="/upload" method="post" enctype="multipart/form-data">
+
+    <label for="idUsuario_input">User ID:</label>
+    <input id="idUsuario_input" type="text" name="idUsuario" value="{{ idUsuario }}" readonly>
+
+    <label for="image_input">Image:</label>
+    <input id="image_input" type="file" name="image" required/>
+
+    <input type="submit" value="Upload!" />
+
+</form>
+
+<form action ="/logout" method="post" enctype="multipart/form-data">
+<input type="submit" value="Logout!">
+</form>
+
+
+{{#each imagens as |imagem|}}
+    <br />
+    <p>Imagem:</p>
+    <img src="{{ imagem }}" width="400px"/>
+    <br />
+{{/each}}
