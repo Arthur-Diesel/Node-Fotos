@@ -1,4 +1,4 @@
-<h1 align="center">:camera_flash: Drive</h1>
+<h1 align="center">:camera_flash: Node Fotos</h1>
 
 ![Github](https://img.shields.io/github/languages/top/Arthur-Diesel/Node-Fotos?style=for-the-badge)
 ![GitHub](https://img.shields.io/tokei/lines/github/Arthur-Diesel/Node-Fotos?style=for-the-badge)
@@ -17,5 +17,5 @@ npm install
 ## Usage
 
 ```
-npm start
+node index.js
 ```
