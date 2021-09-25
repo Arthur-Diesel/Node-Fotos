@@ -22,6 +22,7 @@ router.post('/register', upload.none(), (req, res) =>
 
     let nome = req.body.nome
     let email = req.body.email
+    email = email.toLowerCase()
     let senha = req.body.senha
 
     var response_select = sql.query(` SELECT idUsuario FROM usuarios WHERE email = '${email}'`)
@@ -48,6 +49,7 @@ router.post('/register', upload.none(), (req, res) =>
 router.post('/login', upload.none(), (req, res) =>
 {
     let email = req.body.email
+    email = email.toLowerCase()
     let senha = req.body.senha
    
     var response_select = sql.query(` SELECT idUsuario FROM usuarios WHERE email = '${email}' AND senha = '${senha}' `)
