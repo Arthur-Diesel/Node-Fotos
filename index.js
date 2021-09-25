@@ -16,11 +16,6 @@ app.set('views', __dirname + '/public/templates');
 
 app.use(bodyParser.urlencoded({extended: false}))
 
-hbs.registerHelper('replace', function( find, replace, options) {
-    var string = options.fn(this);
-    return string.replace( find, replace );
-});
-
 app.use(session({
 	secret: 'secret',
 	resave: true,
