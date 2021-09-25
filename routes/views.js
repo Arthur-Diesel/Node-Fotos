@@ -37,9 +37,9 @@ router.get('/register', (req, res) =>
 
 router.get('/fotos', (req, res) =>
 {
-    if (req.session.loggedin == undefined || req.session.loggedin == false)
+    if (req.session.loggedin != true)
     {
-        res.status(401).redirect('/login')
+        res.status(401).redirect('/login')   
     }
     else
     {
