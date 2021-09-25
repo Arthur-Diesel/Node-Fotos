@@ -96,5 +96,16 @@ router.post('/upload', upload.single('image'), (req, res) =>
 
 })
 
+router.post('/delete', upload.none(), (req, res) =>
+{
+    var imagem = req.body.idImagem
+    var arrayImagem = imagem.split('/')
+    var idUsuario = arrayImagem[0]
+    var nomeImagem = arrayImagem[1]
+    
+    fs.unlinkSync(path.resolve('./uploads') + '/' + imagem)
+    sql.query(` DELETE FROM imagens WHERE nome = '${nomeImagem}' and idUsuario = '${idUsuario}' `)
+    res.status(204).redirect('/fotos')
+})
 
 module.exports = router

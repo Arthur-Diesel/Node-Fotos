@@ -14,7 +14,13 @@
 <input type="submit" value="Logout!">
 </form>
 
-
 {{#each imagens as |imagem|}}
     <img src="uploads/{{ imagem }}" height="20%"/>
+    <br />
+    <br />
+    <form action="/delete" method="post" enctype="multipart/form-data"> <!-- Method should be delete but HTML doesn't support it! -->
+        <label for="idImagem_input"></label>
+        <input id="idImagem_input" type="text" name="idImagem" value="{{ imagem }}" readonly style="display: none;">
+        <input type="submit" value="Excluir!">
+    </form>
 {{/each}}
