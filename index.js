@@ -1,8 +1,16 @@
 const express = require('express')
 const bodyParser = require('body-parser')
 const hbs = require('hbs')
-
+const mysql = require('sync-mysql')
 var session = require('express-session');
+require('dotenv/config')
+
+var sql = new mysql({
+    host: process.env.SQL_HOST,
+    user: process.env.SQL_USER,
+    password: process.env.SQL_PASSWORD,
+    database: process.env.SQL_DATABASE
+});
 
 var app = express()
 
@@ -31,7 +39,18 @@ function ensureAuthenticated(req, res, next)
 	}
 	else
 	{
-		next()
+		var email = req.session.username
+		var url = req.url.split('/')
+		var idUsuario = url[1]
+		var response_select_usuario = sql.query(` SELECT idUsuario FROM usuarios WHERE email = '${email}' `)
+		if(response_select_usuario[0]['idUsuario'] == idUsuario)
+		{
+			next()
+		}
+		else
+		{
+			res.status(401).json({status: 'Unauthorized access!'})
+		}
 	}
 }
 
